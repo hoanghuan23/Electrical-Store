@@ -1,0 +1,36 @@
+#contact {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    max-width: 900px ;
+}
+.member {
+    margin-top: 30px;
+    border: 2px #ccc solid;
+}
+
+.member .avt img {
+    width: 50%;
+    margin-left: 50px;
+}
+
+.member .infor {
+    font-family: sans-serif;
+    margin-top: 20px;
+}
+.member .infor span {
+    margin-left: 10px;
+}
+
+#contact .back-home {
+    text-align: center;
+}
+
+#contact .back-home button {
+    margin-top: 50px;
+    padding: 10px 60px;
+    font-size: 18px;
+    background-color: #ff5f17;
+    font-weight: 700;
+    border: 0px;
+    color: #fff;
+}

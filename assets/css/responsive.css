@@ -1,0 +1,28 @@
+/* 1024px = 64em */
+@media (min-width: 64em) {
+    
+}
+
+
+/* Tablet */ 
+/* 1023px = 63.9375em */
+@media  (max-width: 63.9375em) {
+}
+
+/* Tablet & Mobile */
+/* 740 = 46.1875em && 1023 = 63.9375em */
+@media (min-width: 46.1875em) and (max-width: 63.9375em) {
+    
+}
+
+/* Mobile */ 
+/* 739px = 46.1875em */
+@media (max-width: 46.1875em) {
+    
+    #login #header,
+    #register #header,
+    #login #footer,
+    #register #footer {
+        display: none;
+    }
+}

@@ -1,0 +1,211 @@
+h2 {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #f15e2c;
+    margin-top: 30px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.product-content{
+    max-width: 1200px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.prd-type {
+    margin-top: 30px;
+    border-bottom: #000 2px solid;
+}
+
+.nav-tabs {
+    justify-content: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    border: none;
+}
+
+.nav-tabs li {
+    position: relative;
+}
+
+.nav-tabs li a {
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    margin: 0px 15px;
+    color: #999;
+}
+
+.nav > li {
+    position: relative;
+    display: block;
+}
+
+.prd-nav .opt {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+
+.nav li a:hover {
+    color: #000;
+}
+
+li {
+    list-style: none;
+}
+
+.prd-nav {
+    width: 100%;
+    border-bottom: #ccc 2px dotted;
+}
+
+.subnav-tree {
+    margin-bottom: 20px;
+}
+
+.subnav-tree:hover {
+    padding: 0px;
+}
+
+.subnav-tree label {
+    font-weight: normal;
+    font-size: 15px;
+    padding: 6px 0px 6px 20px;
+    width: 100%;
+}
+
+.subnav-tree label:hover {
+    padding-left: 52px;
+    background-color: #d8d6d6;
+    width: 100%;
+}
+
+label input {
+    width: 30px;
+    height: 30px;
+}
+  
+.prd-right {
+    padding-left: 20px;
+}
+
+.prd-banner {
+    margin-bottom: 40px;
+}
+
+.list-prd {
+    margin-right: -36px;
+}
+
+.list-prd .list-item {
+    margin-bottom: 20px;
+}
+
+.list-prd .list-item .item {
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+    border: none;
+    border-radius: 0px;
+}
+
+.list-prd .list-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.list-prd .list-item .img-item {
+    display: block;
+}
+
+.list-prd .list-item .img-item-hover {
+    display: none;
+}
+
+.list-item:hover .img-item-hover {
+    display: block;
+}
+
+.list-item .btn-buy {
+    text-align: center;
+    position: relative;
+    height: 60px;
+    top: -60px;
+}
+
+.list-prd .btn-buy .btn-buy-now {
+    border-radius: 0px;
+    background-color: #f15e2c;
+    border: #f15e2c 1px solid;
+    color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px 25px;
+    display: none;
+}
+
+.list-item:hover .btn-buy .btn-buy-now {
+    display: inline-block;
+}
+
+.list-item .caption {
+    margin-top: -35px;
+}
+
+.list-item .caption h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.list-item .caption .type {
+    color: #f15e2c;
+    border-bottom: #ccc 2px dotted;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.caption .name a,
+.caption .price {
+    font-weight: bolder;
+}
+
+.caption .name a:hover {
+    color: #f15e2c;
+}
+
+.pagination {
+    display: inline;
+    margin: 25px 0px 5px 10px;
+    text-align: center;
+}
+
+.pagination a, 
+.pagination span {
+    border: #000 1px solid;
+    border-radius: 50%;
+    padding: 5px 10px;
+    margin: 5px;
+    color: #fff;
+}
+
+.pagination a{
+    background-color: #000;
+}
+.pagination span {
+    background-color: #f46e42;
+}

@@ -1,0 +1,178 @@
+h2 {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #f15e2c;
+    margin-top: 30px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.back-more-product {
+    padding: 10px 0px 0px 20px;
+    font-size: 16px;
+    font-style: italic;
+    color: #f15e2c;
+}
+
+#cart .left,
+#cart .right {
+    box-sizing: border-box; /* Đảm bảo padding và border không làm tăng kích thước của cột */
+    padding: 0px 10px;
+}
+#cart h1{
+    font-family:GeometricExtraBold;
+    font-size: 28px;
+    line-height: 45px;
+    text-transform: uppercase;
+    padding-top: 10px;
+    background: #f1f1f1;
+}   
+#cart .giohang {
+    color: #000;
+    background-color: #f1f1f1;
+    font-family: GeometricExtraBold;
+    font-size: 18px;
+    margin: 20px 0px 20px 0px;
+    padding: 5px 20px 5px 20px;
+}
+
+#cart .product-thumbnail {
+    width: 17%;
+}
+#cart .product-name {
+    width: 27%;
+}
+#cart .product-price {
+    width: 14%;
+}
+#cart .product-quantity {
+    width: 18%;
+}
+#cart .product-subtotal {
+    width: 20%;
+}
+
+#cart .product-remove {
+    width: 4%;
+}
+
+#cart .table.shop_table{
+    border: 1px solid #ccc;
+}
+#cart .shop_table thead th{
+    background: #f1f1f1;
+    text-align: center;
+    text-transform: uppercase;
+    color: black;
+    border-right: 1px solid #f7f3f3; 
+    border-bottom: 2px solid #ccc;
+    padding: 20px 20px 20px 20px;
+}
+
+
+#cart .cart-item {
+    text-align: center;
+}
+#cart .cart-item td {
+    padding: 20px 0px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+#cart .quantity{
+    display: flex;
+    justify-content: center;
+}
+#cart .item{
+    width: 75%;
+}
+#cart .qty{
+    width: 40px;
+}
+#cart .minus, 
+#cart .qty,
+#cart .plus{
+    border: 1px solid #444;
+}
+
+.update_quantity {
+    margin-left: 5px;
+}
+
+#cart .donhang {
+    color: #000;
+    background-color: #f1f1f1;
+    font-family: GeometricExtraBold;
+    font-size: 23px;
+    margin: 20px 0px 20px 0px;
+    padding: 5px 20px 5px 20px;
+}
+
+#cart .donhang h3 {
+    padding-top: 20px;
+}
+
+#cart .list-group-item.divider {
+    border-bottom: #000 2px solid;
+    margin: 0px;
+    padding: 0px;
+}
+
+.khuyenmai {
+    color: #000000;
+    font-family: GeometricExtraBold;
+    font-size:18px;
+    margin: 20px 0px 0px;
+    padding: 5px 0px 0px 0px ;
+
+}
+#cart .input-group .btn-apply {
+    border-radius: 0px;
+    background-color: #f15e2c;
+    color: #ffffff;
+    font-family: GeometricExtraBold;
+    font-size: 18px;
+    height: 40px
+}
+#cart .list-group-item.divider-1 {
+    border-bottom: #000 2px solid;
+    margin: 0px;
+    padding: 15px;
+}
+
+#order_review table tfoot tr th {
+    font-size: 16px;
+    color: #333;
+    text-orientation: uppercase;
+    padding-left: 20px;
+}
+
+#order_review tfoot tr.order th, 
+#order_review tfoot tr.order td {
+    padding-top: 40px;
+}
+
+#order_review tfoot tr.order-total th {
+    color:#000;
+    font-size: 18px;
+}
+
+#order_review tfoot tr.order-total td {
+    color:#000000;
+    font-size: 23px;
+    
+}
+
+#order_review tfoot tr.order-total th, 
+#order_review tfoot tr.order-total td {
+    padding-top: 40px;
+}
+#place_order {
+    border: 0px;
+    background-color: #f15e2c;
+    color: #fff;
+    font-family: GeometricExtraBold;
+    font-size: 23px;
+    height: 80px;
+    width: 100%;
+    margin-top: 10px;
+}

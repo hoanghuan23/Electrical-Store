@@ -1,0 +1,26 @@
+body {
+    background-color: #ffffcc;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.button {
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button {
+    background-color: aliceblue;
+    border: none;
+    padding: 10px;
+}
+
+button a {
+    text-decoration: none;
+    color: #f15e2c;
+    font-size: 20px;
+}

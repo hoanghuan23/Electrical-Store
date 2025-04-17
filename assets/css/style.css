@@ -1,0 +1,760 @@
+body {
+    overflow-x: hidden; /* che đi con mà vượt ra ngoài cha */
+}
+
+/* style thẻ a của toàn chương trình */
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+#header .menu {
+    background: #303030;
+    text-align: right;
+    height: 40px;
+    width: 100%;
+    padding: 0 60px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#header .menu li {
+    list-style-type: none;
+    position: relative;
+    display: inline-block;
+    margin-left: 25px;
+    transition: all 0.3s ease;
+}
+
+#header .menu li a {
+    color: #fff;
+    font-size: 13px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+}
+
+#header .menu li a:hover {
+    color: #f15e2c;
+    transform: translateY(-2px);
+}
+
+.menu li a img {
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+}
+
+.menu li a:hover img {
+    transform: scale(1.1);
+}
+
+.row-nav {
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+#nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 60px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#nav .logo {
+    padding-left: 60px;
+}
+
+/* bỏ dấu chấm thẻ li */
+#nav .nav-list, .subnav {
+    list-style-type: none;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+#nav > .nav-list > li {
+    display: inline-block;
+    margin: 0 15px;
+    position: relative;
+}
+
+.nav-list > li > a {
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px 0;
+    color: #333;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.nav-list > li > a svg {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.nav-list > li:hover > a {
+    color: #ff5f17; 
+}
+
+.nav-list > li:hover > a svg {
+    transform: rotate(180deg);
+}
+
+#nav li {
+    position: relative;
+}
+
+.line::after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-right: #e3e2e2 1px solid;
+    height: 20px;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* thẻ a là con trực tiếp của thẻ li và thẻ li là con trực tiếp của thẻ nav */
+.nav-list > li > a {
+    font-size: 17px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 900;
+}
+
+#nav li a {
+    line-height: 46px;
+    padding: 0 20px;
+    display: block;
+
+}
+
+#nav li:hover .subnav {
+    display: block;
+}
+
+.nav-list > li:hover > a,
+#nav .subnav li:hover {
+    color: #ff5f17;
+}
+
+#nav .subnav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+#nav .subnav a {
+    color: #333;
+    padding: 12px 20px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: block;
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+#nav .subnav a:hover {
+    color: white;
+    background-color: rgb(81, 63, 248);
+}
+
+#nav .subnav li:hover {
+    background-color: rgb(81, 63, 248);
+}
+
+/* #nav .row {
+    padding: 0 10px 0 200px;
+ }  */
+
+.search-nav .form {
+    display: flex;
+}
+
+.form .form-control {
+    margin-left: 30px;
+    width: 250px;
+    height: 40px;
+    padding-left: 34px;
+    border-radius: 0px;
+    font-size: 12px;
+    background-color: white;
+    background-image: url('../img/header/nav/icon_tim_kiem.svg');
+    background-position: 7px 7px; 
+    background-repeat: no-repeat;    
+}
+.form .btn.btn-dark {
+    border-radius: 0px;
+    font-size: 13px;
+    margin-left: 6px;
+}
+
+#carouselExample {
+    text-align: center;
+    padding: 0px;
+}
+
+.carousel-item{
+    margin-top: 24px;
+    height: 50px;
+    width: 100%;
+    background: #f1f1f1;
+    color: #000000;
+}
+
+#carouselExample center{
+    margin-top: 15px;
+}
+
+#carouselExample button {
+    width: 25%;
+    margin-top: 20px;
+}
+
+#carouselExample .carousel-control-prev {
+    justify-content: flex-end;
+}
+
+#carouselExample .carousel-control-next {
+    justify-content: flex-start;
+}
+
+#carouselExample span {
+    color: #000;
+}
+
+
+#home-banner1 img {
+    height: 50vw;
+    width: 100%;
+    height: auto;
+    display: block;
+    max-width: 100%;
+    object-fit: contain;
+}
+/* Style content */
+
+/* style class home-collection */
+#content .home-collection {
+    margin: 0px 133px;
+    padding: 80px 0px 40px;
+}
+
+.home-collection .left {
+    padding-left: 5px;
+    padding-right: 20px;
+} 
+
+.home-collection .right {
+    padding-left: 20px;
+    padding-right: 5px;
+}
+
+#content .collection-list img {
+    width: 100%;
+    height: 100%;
+}
+
+#content .collection-list img:hover {
+    /* Làm mờ ảnh */
+    opacity: 0.7;
+}
+
+#content .collection-list h3,p {
+    margin-bottom: 10px;
+}
+
+.home-collection .content-collection {
+    margin-top: 30px;
+}
+
+/* style title của toàn chương trình */
+#content .title {
+    text-align: center;
+    /* line-height: 1.5; */
+    margin: 30px auto;
+    display: block;
+    width: fit-content;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #000;
+    font-size: 30px;
+    font-weight: 900;
+    margin-bottom: 40px;
+}
+
+/* style .title thẻ a */
+#content .title a{
+    margin-top: 30px;
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 900;
+}
+
+/* style thẻ a có thuộc tính hover cho toàn chương trình */
+#content a:hover {
+    color: #F15E2C;
+}
+.collection-list .desc p {
+    color: #000;
+    font-size: 16px;
+}
+
+/* Style class  home-buy*/
+#content .home-buy {
+    max-width: 1200px;
+    padding: 40px 0px 30px;
+}
+
+
+.home-buy .item {
+    position: relative;
+    overflow: hidden;
+    height: 270px;
+    padding: 0px 5px;
+}
+
+.home-buy .item-background {
+    position: relative;
+    height: 100%;
+}
+
+.home-buy .item-background img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+.home-buy .item-group {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+    z-index: 2;
+}
+
+.home-buy .item-group .item-title {
+    font-size: 23px;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.home-buy .item-group a {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #ff5f17;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.home-buy .item-group a:hover {
+    background-color: #fff;
+    color: #ff5f17;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    border-color: #ff5f17;
+}
+
+.home-buy .item-group .subgroup {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* style class home-banner2 */
+#content .home-banner2 {
+    margin-top: 40px;
+}
+#content .home-banner2 img {
+    height: 50vw;
+    width: 100%;    
+}
+
+/* style class home-instagram */
+#content .home-instagram {
+    max-width: 1200px;
+    margin-top: 40px;
+    padding: 40px 0px 80px 0px;
+}
+
+.home-instagram .left {
+    padding-left: 5px;
+    padding-right: 30px;
+    overflow: hidden;
+}
+
+.home-instagram .right {
+    padding-left: 20px;
+    padding-right: 5px;
+    overflow: hidden;
+}
+
+.home-instagram .right .title{
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.home-instagram .right .post-item {
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.home-instagram .post-item img {
+    width: 300px;
+}
+
+.home-instagram .post-item .post-title {
+    margin-top: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+}
+.home-instagram .post-item .post-desc {
+    margin-top: 15px;
+    margin-bottom: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    color: #000;
+    /* display: block; */
+    text-overflow: ellipsis;
+    /* Căn chữ ngang bằng cột chứa */
+    text-align: justify;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 5.6em;
+    line-height: 1.4em;
+    /* Hiển thị dưới dạng hộp chứa */
+    display: -webkit-box;
+    /* Giới hạn tối đa 4 dòng được hiển thị */
+    -webkit-line-clamp: 4;
+    -moz-line-clamp: 4;
+    line-clamp: 4;
+    /* nội dung văn bản bên trong phần tử được sắp xếp theo chiều dọc */
+    -webkit-box-orient: vertical;
+}
+
+.home-instagram .right .post-detail a {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    color: #f15e2c;
+    font-style: italic;
+    display: block;
+}
+
+button.btn.btn-load-more {
+    padding: 6px 30px;
+    font-size: 18px;
+    background-color: #000;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 0px;
+}
+
+/* Footer */
+#footer {
+    padding-top: 60px;
+    background-color:#4C4C4C;
+}
+
+#footer .row {
+    padding: 0px 0px 20px 0px;
+}
+
+#footer .center {
+    display: flex; /* Sử dụng Flexbox để căn giữa */
+    justify-content: center; /* Căn giữa theo chiều ngang (hoàn toàn giữa) */
+    align-items: center;    /* Căn giữa theo chiều dọc (hoàn toàn giữa) */
+}
+
+#footer .center img {
+    width: auto;
+}
+
+#footer h4{
+    color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    padding-bottom: 9px;
+    line-height: 1.6em;
+    font-weight: 700;
+}
+
+button.btn.btn-search-shop,
+button.btn.btn-return-home {
+    padding: 6px 60px;
+    font-size: 18px;
+    background-color: #ff5f17;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 0px;
+}
+
+.footer-item_link{
+    padding: 0px 0px 5px;
+    color: #cccccc;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.footer-item_link:hover{
+    color: #ff5f17;
+}
+
+.social-footer a {
+    padding-left: 3px;
+}
+
+.footer_list{
+    list-style: none;
+    padding-left:0;
+}
+
+#footer .social-footer img {
+    display: inline-block;
+}
+
+#footer .search {
+    width: 270px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+#inputReceiveMail {
+    display: inline-block;
+    width: 190px;
+    height: 39px;
+    border-radius: 0px;
+}
+
+.logo-footer{
+    vertical-align: middle;
+    padding: 10px 10px;
+}
+
+#bocongthuong{
+    padding: 35px 0px;
+}
+
+.col-md-9.copy {
+    margin-top: 65px;
+    padding: 0px 10px;
+}
+
+#footer .col-md-9.copy p {
+    color: #808080;
+}
+
+
+/*  */
+.cartfixed {
+    position: fixed;
+    right: 0px;
+    top: 232px;
+    width: 40px;
+    height: 75px;
+    background-color: #ff5f17;
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    padding: 10px 10px;
+}
+.cartfixed a {
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 9999;
+    color: #fff;
+    font-family: monospace;
+    font-weight: 700;
+
+}
+
+.social {
+    position: fixed;
+    right: 0px;
+    top: 330px;
+    width: 40px;
+    background-color: #666;
+    padding: 8px;
+    text-align: center;
+    /* z-index: 9999; */
+}
+
+.social a {
+    text-align: center;
+}
+
+.social a img {
+    margin: 5px 0px;
+}
+
+/* Hiệu ứng sóng nước */
+@keyframes wave {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-5px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(5px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Áp dụng hiệu ứng cho .animate-wave */
+.animate-wave {
+    animation: wave 2s infinite; /* Tạo hiệu ứng sóng nước trong vòng 2 giây, lặp vô hạn */
+}
+/* FORM LOGIN */
+
+.login, 
+.register {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('../img/register/bg_comingsoon.jpg') center / auto no-repeat;
+}
+
+.login a, 
+.register a {
+    color: #F15E2C;
+}
+
+.login a:hover,
+.register a:hover {
+    color: #f15e2c;
+    opacity: 0.8;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+#login .wrapper,
+#register .wrapper {
+    width: 420px;
+    color: #fff;
+    background: url('');
+    border-radius: 10px;
+    padding: 20px 40px;
+}
+
+#login .wrapper h2,
+#register .wrapper h2 {
+    font-size: 36px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 5px; /* Thay đổi khoảng cách giữa các chữ */
+}
+
+#login .wrapper .form-group,
+#register .wrapper .form-group {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0px;
+}
+
+#login .form-group input,
+#register .form-group input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 10px;
+    font-size: 16px;
+    color: #F15E2C;
+}
+
+#login .form-group input::placeholder,
+#register .form-group input::placeholder {
+    color: #fff;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+#login .form-group svg,
+#register .form-group svg {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);   
+}
+
+#login .wrapper .remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin: -15px 0px 15px;
+}
+
+#login .remember-forgot label input {
+    accent-color: #f15e2c;
+}
+
+#login .wrapper .btn,
+#register .wrapper .btn {
+    width: 50%;
+    transform: translateX(50%);
+    height: 45px;
+    background: #f15e2c;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    
+}
+
+#login .register-link,
+#register .register-link {
+    text-align: end;
+    font-size: 15px;
+    margin: 20px 0px 15px;
+}
+

@@ -1,0 +1,87 @@
+.prd_detail {
+    max-width: 1200px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.back {
+    padding: 10px 0px 10px 20px;
+    font-size: 16px;
+    font-style: italic;
+    color: #f15e2c;
+}
+.prd-left {
+    padding-right: 50px;
+}
+
+#carouselExampleIndicators {
+}
+
+.prd_detail .carousel-inner {
+    margin-bottom: 50px;
+}
+
+.prd_detail .carousel-inner .carousel-item{
+    width: 100%;
+    height: 100%;
+}
+
+.prd_detail .carousel-inner .carousel-item img {
+}
+
+.prd_detail #carouselExample button {
+    width: 25%;
+}
+
+.prd_detail #carouselExample .carousel-control-prev {
+    justify-content: flex-end;
+}
+
+.prd_detail #carouselExample .carousel-control-next {
+    justify-content: flex-start;
+}
+.prd-right {
+    margin-top: 30px;
+    padding-left: 30px;
+}
+
+.prd-right h4 {
+    font-size: 28px;
+    text-transform: uppercase;
+    line-height: 1.4em;
+    font-weight: bold;
+}
+
+.prd-right h5 {
+    margin-top: 30px;
+
+}
+.prd-right .prd_code, .prd_status, .prd_gender, .prd_price, .prd_quantity, .prd_desc , .prd_color {
+    margin-top: 10px;
+}
+
+.prd_price span{
+    font-size: larger;
+    color: #ff5f17;
+}
+
+.prd-right .prd_desc p{
+    margin-left: 10px;
+}
+
+.prd-right span {
+    font-style: italic;
+    font-weight: bolder;
+}
+
+.prd-right button{
+    margin-top: 50px;
+    padding: 10px 60px;
+    font-size: 18px;
+    background-color: #ff5f17;
+    font-weight: 700;
+    border: 0px;
+}
+
+.prd-right button a {
+    color: #fff;
+}
