@@ -7,6 +7,15 @@
 <div id="header" class="container-fluid">
     <div class="row">
         <ul class="menu">
+            <?php
+            if (isset($_SESSION['username'])) {
+                echo '<li>
+                    <a href="#">
+                        Xin chào ' . $_SESSION['username'] . '
+                    </a>
+                </li>';
+            }
+            ?>
             <li>
                 <a href="#">
                     <img src="../assets/img/header/menu/icon_tim_cua_hang.svg" alt="">
