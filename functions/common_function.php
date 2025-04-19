@@ -118,7 +118,7 @@
                                         <h3 class='name'>
                                             <a href='product_detail.php?product_id=$product_id' >$product_name</a>
                                         </h3>
-                                        <h3 class='color'>$product_color</h3>
+                                        <h3 class='color'>$product_color (số lượng {$row['product_quantity']})</h3>
                                                 
                                         <h3 class='price'>$product_price VNĐ</h3>
                                     </div>
@@ -771,15 +771,29 @@
                             $user_add = $row['user_address'];
                             $user_note = $row['user_note'];
                             
-                            // Hiển thị nút hủy đơn hàng chỉ khi trạng thái không phải là "Đã hủy"
+                            // Hiển thị nút hủy đơn hàng chỉ khi trạng thái không phải là "Đã hủy" hoặc "Đã giao hàng"
                             $cancel_button = '';
-                            if($status != "Đã hủy") {
+                            if($status != "Đã hủy" && $status != "Đã giao hàng") {
                                 $cancel_button = "<a href='../user_area/order.php?user_id=$user_id&cancel_order=$order_code' class='btn btn-danger btn-sm' onclick='return confirm(\"Bạn có chắc chắn muốn hủy đơn hàng này?\")'>
                                                     <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-circle' viewBox='0 0 16 16'>
                                                         <path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/>
                                                         <path d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'/>
                                                     </svg> Hủy 
                                                 </a>";
+                            }
+                            
+                            // Hiển thị trạng thái với màu sắc tương ứng
+                            $status_display = $status;
+                            $status_class = '';
+                            
+                            if($status == "Đang xử lý") {
+                                $status_class = "text-warning";
+                            } elseif($status == "Đang giao hàng") {
+                                $status_class = "text-primary";
+                            } elseif($status == "Đã giao hàng") {
+                                $status_class = "text-success";
+                            } elseif($status == "Đã hủy") {
+                                $status_class = "text-danger";
                             }
                             
                             echo "
@@ -792,7 +806,7 @@
                                 <td class= 'order'>$order_date</td>
                                 <td class= 'order'>".number_format($order_total_price, 0, ',', '.')." VND</td>
                                 <td class= 'order'>$user_add</td>
-                                <td class= 'order'>$status</td>
+                                <td class= 'order'><span class='$status_class'>$status_display</span></td>
                                 <td class= 'order'>$cancel_button</td>
                             </tr>";
                         }
