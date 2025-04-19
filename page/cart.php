@@ -9,7 +9,6 @@ if(isset($_GET["task"]) && $_GET["task"]=="delete") {
     $sql_delete = "delete from tbl_cart_detail where product_id = " .$product_id;
     if (mysqli_query($conn, $sql_delete)) {
         // header("location:category.php");
-        // echo "New record created successfully";
     }
     else {
         echo "Error: " .$sql . "</br>" . mysqli_error($conn); 
@@ -22,11 +21,10 @@ if(isset($_POST['update_qty_prd'])) {
     $update_id = $_POST['update_qty_id'];
     $sql_update = "update `tbl_cart_detail` set quantity = '$update_value' where product_id = $update_id";
     if (mysqli_query($conn, $sql_update)) {
-                echo "<script>window.open('cart.php','_self')</script>";
-                // echo "New record created successfully";
-            }
-            else {
-                echo "Error: " .$sql_update . "</br>" . mysqli_error($conn); 
+        echo "<script>window.open('cart.php','_self')</script>";
+    }
+    else {
+        echo "Error: " .$sql_update . "</br>" . mysqli_error($conn); 
     }
 }
 
@@ -44,6 +42,12 @@ if(isset($_POST['update_qty_prd'])) {
     <link rel="stylesheet" href="../assets/css/cart.css">
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/app.js"></script>
+    <style>
+        .product-thumbnail img {
+            max-width: 80px;
+            max-height: 80px;
+        }
+    </style>
     </head>
     <body>
         <div id="cart">
@@ -71,7 +75,6 @@ if(isset($_POST['update_qty_prd'])) {
                                                 <th class="product-price">Giá</th>
                                                 <th class="product-quantity">Số lượng</th>
                                                 <th class="product-subtotal">Thành tiền</th>
-                                                <!-- <th class="product-option">Xóa</th> -->
                                                 <th class="product-remove">Xóa</th>
                                             </tr>
                                         </thead>
@@ -106,27 +109,26 @@ if(isset($_POST['update_qty_prd'])) {
                                                                 $prd_price = array(($prd_pr * $row_cart['quantity']));
                                                                 $product_value = array_sum($prd_price);
                                                                 $total_price = $total_price + $product_value;
-                                                                // $total_price_in = number_format($total_price, 0, ',', '.')
                                                                 
                                                                 ?>     
-                                                                <form action='cart.php' method = 'post'>
+                                                                <form action='cart.php' method='post'>
+                                                                    <input type='hidden' name='update_qty_prd' value='1'>
                                                                     <?php
                                                                         echo "<input type='hidden' value = '$product_id' class='qty' name='update_qty_id'>";
                                                                         echo " <tr class='cart-item'>";
                                                                         echo "    <td class='product-thumbnail'><img class='item' src='./../admin/quanlysanpham/upload/$product_img' alt=''></td>";
                                                                         echo "    <td class='product-name'>$product_name</td>";
-                                                                        echo "    <td class='product-price'>$product_price VNĐ </td>";
+                                                                        echo "    <td class='product-price' data-price='$prd_pr'>$product_price VNĐ </td>";
                                                                         echo "    <td class='product-quantity'>
-                                                                                    <div class='quantity'>
-                                                                                        <input type='number' min = '1' value = '$quantity' class='qty' name='qty'>
-                                                                                        <input type='submit'  value = 'Cập nhật' class='update_quantity' name='update_qty_prd'>
+                                                                                    <div class='quantity d-flex'>
+                                                                                        <input type='number' min='1' value='$quantity' class='qty' name='qty'>
+                                                                                        <button type='submit' class='btn btn-sm btn-primary ms-2'>Cập nhật</button>
                                                                                     </div>
                                                                                 </td>";
                                                                         echo "    <td class='product-subtotal'>$prd_qty_price VNĐ</td>";
-                                                                        echo "    <td class='product-option'>
+                                                                        echo "    <td class='product-remove'>
                                                                                     <a class='btn' href='cart.php?task=delete&id=".$row["product_id"]."'>
                                                                                             <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash3' viewBox='0 0 16 16'>
-                                                              s
                                                                                                 <path d='M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z'/>
                                                                                             </svg>
                                                                                         </a>";
@@ -142,9 +144,7 @@ if(isset($_POST['update_qty_prd'])) {
                                                     }
                                                 ?>                                  
                                         </tbody>
-                                        <!-- <a href=""></a> -->
                                     </table>
-                                    <!-- <input type="submit" value="Cập nhật số lượng"> -->
                         </ul>
                     </div>
 
@@ -180,7 +180,7 @@ if(isset($_POST['update_qty_prd'])) {
                                                 <td>0 VNĐ</td>
                                             </tr>
                                             <tr class='order-total'>
-                                                <th>TẠM TÍNH</th>
+                                                <th>TỔNG</th>
                                                 <td></td>
                                                 <td>" . number_format($total_price, 0, ',', '.') . " VNĐ</td>
                                             </tr>";
@@ -197,7 +197,6 @@ if(isset($_POST['update_qty_prd'])) {
                                     </a>";
                             }
                             ?>
-                            <button class="btn btn-cart btn-complete-detail "></button>
                         </ul>
                     </div>
                 </div>
@@ -208,4 +207,3 @@ if(isset($_POST['update_qty_prd'])) {
         </div>
     </body>
 </html>
-    

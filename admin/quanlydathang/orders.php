@@ -158,8 +158,11 @@
                                 }
                             }
                             else {
-                                echo "<script>alert('Không tìm thấy mã đơn hàng này')</script>";
-                                echo "<script>window.open('./dashboard.php?orders','_self')</script>";
+                                if(isset($_POST["btn_search"])) {
+                                    echo "<tr><td colspan='10' class='text-center'>Không tìm thấy đơn hàng nào với mã tìm kiếm này</td></tr>";
+                                } else {
+                                    echo "<tr><td colspan='10' class='text-center'>Chưa có đơn hàng nào</td></tr>";
+                                }
                             }
                         ?>
                     </table>

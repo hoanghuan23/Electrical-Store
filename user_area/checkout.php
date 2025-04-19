@@ -41,11 +41,12 @@
                             $total_price = 0;
                             if(isset($_GET["task"]) && $_GET["task"]=="checkout") {
                                 if(isset($_SESSION['username'])) {
-                                    $user_ip = $_GET['ip'];
-                                    $select_query="SELECT * FROM tbl_users where user_ip ='$user_ip'";
+                                    $user_id = $_SESSION['user_id'];
+                                    $user_ip = getIPAddress();
+                                    $select_query="SELECT * FROM tbl_users where user_id = '$user_id'";
                                     $result_query=mysqli_query($conn,$select_query);
-                                    while($row=mysqli_fetch_assoc($result_query)) {
-                                        $user_id = $row['user_id'];
+                                    $row=mysqli_fetch_assoc($result_query);
+                                    if($row) {
                                         $user_name = $row['user_name'];
                                         $user_mobile = $row['user_mobile'];
                                         $user_address = $row['user_address'];
