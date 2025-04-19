@@ -144,7 +144,6 @@
                                                                 <select class='form-select' name='order_payment_method' id='order_payment_method'>
                                                                     <option value='Thanh toán khi nhận hàng' ".($row["order_payment_method"] == "Thanh toán khi nhận hàng" ? "selected" : "").">Thanh toán khi nhận hàng</option>
                                                                     <option value='Chuyển khoản ngân hàng' ".($row["order_payment_method"] == "Chuyển khoản ngân hàng" ? "selected" : "").">Chuyển khoản ngân hàng</option>
-                                                                    <option value='Thanh toán qua thẻ tín dụng' ".($row["order_payment_method"] == "Thanh toán qua thẻ tín dụng" ? "selected" : "").">Thanh toán qua thẻ tín dụng</option>
                                                                 </select>
                                                             </div>
                                                         </div>
