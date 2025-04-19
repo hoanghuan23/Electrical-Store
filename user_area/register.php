@@ -17,13 +17,17 @@
     if ($password !== $confirm_password) {
       echo "<script>alert('Mật khẩu và xác nhận mật khẩu không khớp')</script>";
     } else {
-        $sql = "select * from tbl_users where user_name = '".$user_name."' or user_email = '".$email."' or user_ip = '".$user_ip."'";
-        //  or user_ip = '".$user_ip."'
-        $result = mysqli_query($conn,$sql);
-        if(mysqli_num_rows($result)>0) {
-            echo "<script>alert('Tên hoặc email đã tồn tại!')</script>";
-        }
-        else{
+        $sql = "SELECT * FROM tbl_users WHERE user_name = '".$user_name."' OR user_email = '".$email."'";
+        $result = mysqli_query($conn, $sql);
+        
+        if(mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+            if($row['user_name'] == $user_name) {
+                echo "<script>alert('Tên đăng nhập đã tồn tại!')</script>";
+            } else if($row['user_email'] == $email) {
+                echo "<script>alert('Email đã tồn tại!')</script>";
+            }
+        } else {
             $sql_insert = "INSERT INTO tbl_users (user_name, user_email, user_password, user_ip, user_address, user_mobile)
                             VALUEs('".$user_name."',
                                   '".$email."',
