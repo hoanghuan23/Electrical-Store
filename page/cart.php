@@ -19,6 +19,19 @@ if(isset($_GET["task"]) && $_GET["task"]=="delete") {
 if(isset($_POST['update_qty_prd'])) {
     $update_value = $_POST['qty'];
     $update_id = $_POST['update_qty_id'];
+    
+    // Check if quantity exceeds available stock
+    $check_stock = "SELECT product_quantity FROM tbl_product WHERE product_id = $update_id";
+    $stock_result = mysqli_query($conn, $check_stock);
+    $stock_row = mysqli_fetch_assoc($stock_result);
+    $available_stock = $stock_row['product_quantity'];
+    
+    if($update_value > $available_stock) {
+        echo "<script>alert('Số lượng sản phẩm vượt quá số lượng trong kho! Số lượng còn lại: $available_stock')</script>";
+        echo "<script>window.open('cart.php','_self')</script>";
+        exit();
+    }
+    
     $sql_update = "update `tbl_cart_detail` set quantity = '$update_value' where product_id = $update_id";
     if (mysqli_query($conn, $sql_update)) {
         echo "<script>window.open('cart.php','_self')</script>";
@@ -191,10 +204,19 @@ if(isset($_POST['update_qty_prd'])) {
                             </div>
                             <?php
                             if (isset($_SESSION['username'])) {
-                                echo "
-                                    <a href='../user_area/checkout.php?task=checkout&ip=$get_ip_add'>
-                                        <input type='submit' id='place_order' name='checkout' value='TIẾP TỤC THANH TOÁN'>
-                                    </a>";
+                                // Check if cart is empty
+                                $check_cart = "SELECT COUNT(*) as cart_count FROM tbl_cart_detail WHERE ip_address = '$get_ip_add'";
+                                $cart_result = mysqli_query($conn, $check_cart);
+                                $cart_row = mysqli_fetch_assoc($cart_result);
+                                
+                                if($cart_row['cart_count'] > 0) {
+                                    echo "
+                                        <a href='../user_area/checkout.php?task=checkout&ip=$get_ip_add'>
+                                            <input type='submit' id='place_order' name='checkout' value='TIẾP TỤC THANH TOÁN'>
+                                        </a>";
+                                } else {
+                                    echo "<p class='text-danger'>Giỏ hàng trống. Vui lòng thêm sản phẩm trước khi thanh toán.</p>";
+                                }
                             }
                             ?>
                         </ul>
