@@ -1,6 +1,9 @@
 <?php
   require('../config/config.php');
   include('../functions/common_function.php');
+
+  $user_id = $_SESSION['user_id'];
+  $user_ip = getIPAddress();
 //   if(isset($_POST['update_address'])) {
 //     $user_id = $_POST['update_add_user'];
 //     $user_mobile = $_POST['customerPhone'];
@@ -101,15 +104,10 @@
                                 <img src="./../assets/img/checkout/icon_COD.svg" alt="">
                             </label>
                             <br>
-                            <label class="checkbox">
-                                <input type="radio" name="payment" class="pay" value="Thanh toán bằng Thẻ quốc tế / Thẻ nội địa / QR Code">
-                                Thanh toán bằng Thẻ quốc tế / Thẻ nội địa / QR Code
-                                <img src="./../assets/img/checkout/card_icon.svg" alt="">
-                            </label>
                             <br>
                             <label class="checkbox">
-                                <input type="radio" name="payment" class="pay" value="Thanh toán bằng ví MoMo">
-                                Thanh toán bằng ví MoMo
+                                <input type="radio" name="payment" class="pay" value="Thanh toán bằng mã QR">
+                                Thanh toán bằng mã QR
                                 <img src="./../assets/img/checkout/icon_momo-01.svg" alt="">
                             </label>
 
@@ -199,7 +197,7 @@
                         <?php
                         echo "  
                         <a href='order.php'>
-                            <input type='submit' class='place_order' value = 'HOÀN TẤT ĐẶT HÀNG' name = 'complete_order'>
+                            <input type='submit' class='place_order' value = 'ĐẶT HÀNG' name = 'complete_order' id='placeOrderBtn'>
                           </a>  ";
                           echo "</form>";
                         ?>    
@@ -212,5 +210,20 @@
                 include '../config/footer.php';
             ?>
         </div>
+        <script>
+            document.getElementById('placeOrderBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                var paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+                
+                <?php 
+                $_SESSION['total_price'] = $total_price;
+                $_SESSION['order_id'] = time() . '_' . $user_id; // Generate a unique order ID
+                ?>
+
+                if(paymentMethod === 'Thanh toán bằng mã QR') {
+                    window.location.href = 'pay.php';
+                }
+            });
+        </script>
     </body>
 </html>
