@@ -92,54 +92,26 @@
         <head>
     <style>
         /* Giới hạn độ dài nội dung */
-        .table td {
+        .table td,
+        .table th {
             max-width: 200px;
+            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        
-        .table td:nth-child(3),
-        .table td:nth-child(4),
-        .table td:nth-child(5) {
-            max-width: 200px;
+            vertical-align: middle;
         }
 
-        /* Cho phép các cột hình ảnh hiển thị đầy đủ */
-        .table td:nth-child(8),
-        .table td:nth-child(9),
-        .table td:nth-child(10) {
-            max-width: none;
-            white-space: normal;
+        .limit-line {
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* Số dòng tối đa */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
-    
-
-        /* Cho phép cột checkbox và nút bấm hiển thị đầy đủ */
-        .table td:nth-last-child(-n+3) {
-            max-width: none;
-            white-space: normal;
-        }
-
-        /* Style cho ảnh */
+                
         .table img {
-            width: 120px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-        }
-
-        /* Thêm tooltip khi hover để xem nội dung đầy đủ */
-        .table td {
-            position: relative;
-        }
-        
-        .table td:hover {
-            overflow: visible;
-            white-space: normal;
-            background-color: #fff;
-            z-index: 1;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 80px;
+            height: auto;
         }
     </style>
 </head>
@@ -181,7 +153,7 @@
                             <th>Trạng thái</th>
                             <th>Chỉnh sửa</th>
                             <th>Xóa</th>
-                            <th>Chọn</th>
+                            <th>Hiển thị</th>
                         </tr>
                         <!-- Form bao trọn table -->
                         <form action="./dashboard.php?news" method="post">
@@ -211,9 +183,9 @@
                                             echo "<td>" .$row["cate_id"]. "</td>";
                                             echo "<td>" .$row["title"]. "</td>";
                                             echo "<td>" .$row["news_desc"]. "</td>";
-                                            echo "<td>" .$row["cont1"]. "</td>";
-                                            echo "<td>" .$row["cont2"]. "</td>";                                        
-                                            echo "<td>" .$row["cont3"]. "</td>";
+                                            echo "<td><div class='limit-line'>" .$row["cont1"]. "</div></td>";
+                                            echo "<td><div class='limit-line'>" .$row["cont2"]. "</div></td>";                                        
+                                            echo "<td><div class='limit-line'>" .$row["cont3"]. "</div></td>";
                                             echo "<td><img class='table img' src='./quanlytintuc/upload/{$row['img']}' alt='Ảnh đại diện'></td>";
                                             echo "<td><img class='table img' src='./quanlytintuc/upload/{$row['img2']}' alt='Ảnh 2'></td>";
                                             echo "<td><img class='table img' src='./quanlytintuc/upload/{$row['img3']}' alt='Ảnh 3'></td>";
@@ -233,10 +205,13 @@
                                                             <path d='M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z'/>
                                                         </svg>
                                                     </a></td>";
-                                            // Tạo checkbox để lựa chọn xóa. Mảng new[] với các giá trị là các new_id
-                                            echo "<td>";
-                                                echo "<input class='form-check-input' type='checkbox' name ='new[]' value='".$row["new_id"]."'>";
-                                            echo "</td>";
+                                            echo "<td><button class='btn btn-info' onclick='showFullContent(".$row["new_id"].")' data-bs-toggle='modal' data-bs-target='#contentModal'>
+                                                        <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-eye-fill' viewBox='0 0 16 16'>
+                                                            <path d='M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z'/>
+                                                            <path d='M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z'/>
+                                                        </svg>
+                                                    </button></td>";
+                                            echo "<td><input class='form-check-input' type='checkbox' name ='new[]' value='".$row["new_id"]."'></td>";
                                         echo "</tr>";
                                     }
                                 }
@@ -331,5 +306,6 @@
             </form>
         </div>
             
-    </body>
+    </div>
+</body>
 </html>
