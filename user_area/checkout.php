@@ -2,8 +2,7 @@
   require('../config/config.php');
   include('../functions/common_function.php');
 
-  $user_id = $_SESSION['user_id'];
-  $user_ip = getIPAddress();
+
 //   if(isset($_POST['update_address'])) {
 //     $user_id = $_POST['update_add_user'];
 //     $user_mobile = $_POST['customerPhone'];
@@ -27,6 +26,8 @@
     <body>
         <?php
             include '../config/header.php';
+            $user_id = $_SESSION['user_id'];
+            $user_ip = getIPAddress();
         ?>
         
         <div id="checkout">
