@@ -66,7 +66,7 @@
     <head>
             <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
             <link rel="stylesheet" href="../../assets/bootstrap.bundle.min.js">    
-            <link rel="stylesheet" href="styleadmin.css">
+            <link rel="stylesheet" href="news.css">
             <script src="../../assets/js/bootstrap.bundle.min.js"></script>
             <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
             <title>Update New</title>
