@@ -439,6 +439,24 @@
                   }
         }
 
+        // Hiển thị video trang chủ
+        function get_video() {
+            global $conn;
+            $youtube_video_id = "OIO3hKyN7ko";
+            
+            echo '
+                <div class="video-container">
+                    <iframe width="600" height="780" 
+                        src="https://www.youtube.com/embed/'.$youtube_video_id.'" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            ';
+        }
+
         // Hiển thị chi tiết tin tức
         function get_new_detail() {
             global $conn;
