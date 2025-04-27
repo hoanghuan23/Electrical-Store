@@ -26,10 +26,10 @@ if(isset($_POST['update_qty_prd'])) {
     $stock_row = mysqli_fetch_assoc($stock_result);
     $available_stock = $stock_row['product_quantity'];
     
-    if($update_value > $available_stock) {
-        echo "<script>alert('Số lượng sản phẩm vượt quá số lượng trong kho! Số lượng còn lại: $available_stock')</script>";
-        echo "<script>window.open('cart.php','_self')</script>";
-        exit();
+    if ($update_value > $available_stock) {
+        echo "<script>
+            alert('Số lượng sản phẩm vượt quá số lượng trong kho! Số lượng còn lại: ".$available_stock."');
+        </script>";
     }
     
     $sql_update = "update `tbl_cart_detail` set quantity = '$update_value' where product_id = $update_id";
