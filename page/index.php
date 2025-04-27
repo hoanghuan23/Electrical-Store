@@ -135,8 +135,11 @@
             <!-- Left: Instagram -->
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 left">
               <div class="row title">
-                <a href="https://www.instagram.com/" class="title">SẢN PHẨM BÁN CHẠY</a>
-              </div>
+                <a href="https://www.youtube.com/" class="title">GIỚI THIỆU SẢN PHẨM</a>
+                  <?php
+                    get_video();
+                  ?>
+                </div>
             </div>
             <!-- Right: News -->
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 right">
