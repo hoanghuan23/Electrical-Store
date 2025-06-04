@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
       <link rel="stylesheet" href="../assets/css/style.css">
       <link rel="stylesheet" href="../assets/css/contact.css">
+      <link rel="icon" href="../assets/img/logo/logo.png">
       <link rel="stylesheet" href="../assets/css/responsive.css">
       <script src="../assets/js/bootstrap.bundle.min.js"></script>
       <script src="../assets/js/app.js"></script>
@@ -23,7 +24,7 @@
     
   <div class="row member">
     <div class="col-4 avt">
-      <img src="../assets/img/member/" alt="">
+      <img src="../assets/img/member/huan.jpg" alt="">
     </div>
 
     <div class="col-8 infor">

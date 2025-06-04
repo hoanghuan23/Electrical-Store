@@ -8,6 +8,7 @@
     <head>
         <meta charset="utf8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../assets/img/logo/logo.png">
         <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="../assets/css/style.css">
         <link rel="stylesheet" href="../assets/css/product.css">
@@ -45,9 +46,7 @@
                                  $result_query=mysqli_query($conn,$select_query);
                                  // $row=mysqli_fetch_assoc($result_query);
                                  if(mysqli_num_rows($result_query)>0) {
-                                    echo "<li class='line'><a href='product.php?data_gender=unisex'>TẤT CẢ</a></li>";
-                                    echo "<li class='line'><a href='product.php?data_gender=men'>NAM</a></li>";
-                                    echo "<li><a href='product.php?data_gender=women'>NỮ</a></li>";  
+                                    echo "<li class='line'><a href='/electrician_web/page/product.php'>TẤT CẢ</a></li>";
                                  }          
                                 ?>
                             </ul>
@@ -75,7 +74,7 @@
                                          ?>
                                     </ul>
                                 </li>
-                                <li class="prd-nav">
+                                <!-- <li class="prd-nav">
                                     <label class="opt">
                                         GIÁ
                                     </label>
@@ -87,25 +86,14 @@
                                         <li><label>200k - 299k</label></li>
                                         <li><label>0 - 200k</label></li>                                        
                                     </ul>
-                                </li>
-                                <li class="prd-nav">
-                                    <label class="opt">
-                                        MÀU SẮC
-                                        
-                                    </label>
-                                    <ul class="subnav-tree">
-                                        <?php
-                                            getcolor();
-                                        ?>
-                                    </ul>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </div>
 
                     <div class="col-sm-12 col-md-9 col-lg-9 prd-right">
                         <div class="row prd-banner">
-                            <img src="./assets/img/product/Desktop_Homepage_Banner.jpg" alt="">
+                            <img src="../assets/img/product/Desktop_Homepage_Banner.jpg" alt="">
                         </div>
                         <div class="row list-prd">
                                 <?php

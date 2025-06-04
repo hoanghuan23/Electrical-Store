@@ -58,6 +58,7 @@
     <head>
         <meta charset="utf8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../assets/img/logo/logo.png">
         <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="../assets/css/style.css">
         <link rel="stylesheet" href="../assets/css/responsive.css">
@@ -127,7 +128,7 @@
                 </div>
 
                 <div class="row return-home">
-                    <a href="../page/index.php" class="btn btn-return-home">
+                    <a href="/electrician_web/index.php" class="btn btn-return-home">
                     <button class="btn btn-return-home">QUAY LẠI TRANG CHỦ</button>
                     </a>
                 </div>

@@ -2,7 +2,7 @@
             <div class="row">
             <div class="col-md-3 sec-search">
                 <div class="row center">
-                    <img src="../assets/img/footer/Store.svg" alt="">
+                    <img src="/electrician_web/assets/img/footer/Store.svg" alt="">
                 </div>
                 <div class="row search-shop">
                     <a href="#" class="btn btn-search-shop">
@@ -16,10 +16,10 @@
                             <h4 class="footer_heading">SẢN PHẨM</h4>
                                 <ul class="footer_list">
                                     <li class="footer-item">
-                                        <a href="../page/product.php?data_gender=men" class="footer-item_link">Tự Động Hóa & Điều Khiển</a>
+                                        <a href="product.php?data_gender=men" class="footer-item_link">Tự Động Hóa & Điều Khiển</a>
                                     </li>
                                     <li class="footer-item">
-                                        <a href="../page/product.php?data_gender=women" class="footer-item_link">Nút Nhấn & Công Tắc</a>
+                                        <a href="/electrician_web/page/product.php?data_gender=women" class="footer-item_link">Nút Nhấn & Công Tắc</a>
                                     </li>
                                     <li class="footer-item">
                                         <a href="#" class="footer-item_link">Cảm Biến</a>
@@ -30,7 +30,7 @@
                             <h4 class="footer_heading">VỀ CÔNG TY</h4>
                                 <ul class="footer_list">
                                     <li class="footer-item">
-                                        <a href="#" class="footer-item_link">Dứa tuyển dụng</a>
+                                        <a href="#" class="footer-item_link">Về tuyển dụng</a>
                                     </li>
                                     <li class="footer-item">
                                         <a href="#" class="footer-item_link">Liên hệ nhượng quyền</a>
@@ -77,13 +77,13 @@
                             <h4>ANANAS SOCIAL</h4>
                             <div class="social-footer">
                                 <a href="#">
-                                    <img src="../assets/img/footer/icon_facebook.svg" alt="">
+                                    <img src="/electrician_web/assets/img/footer/icon_facebook.svg" alt="">
                                 </a>
                                 <a href="#">
-                                    <img src="../assets/img/footer/icon_instagram.svg" alt="">
+                                    <img src="/electrician_web/assets/img/footer/icon_instagram.svg" alt="">
                                 </a>
                                 <a href="#">
-                                    <img src="../assets/img/footer/icon_youtube.svg" alt="">
+                                    <img src="/electrician_web/assets/img/footer/icon_youtube.svg" alt="">
                                 </a>      
                                 </div>
                         </div>
@@ -91,19 +91,19 @@
                             <h4>ĐĂNG KÝ NHẬN MAIL</h4>
                             <div class="search">
                                 <input type="email" class="form-control inputReceiveMail" id="inputReceiveMail">
-                                <img src="../assets/img/footer/arrow_right.jpg">
+                                <img src="/electrician_web/assets/img/footer/arrow_right.jpg">
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-6 logo-footer">
                             <a href="#">
-                                <img src="../assets/img/footer/Logo_Ananas_Footer.svg" alt="">
+                                <img src="/electrician_web/assets/img/footer/Logo_Ananas_Footer.svg" alt="">
                             </a>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-3 icon">
                             <a href="#">
-                                <img src="../assets/img/footer/icon_bocongthuong.png" alt="" id="bocongthuong">
+                                <img src="/electrician_web/assets/img/footer/icon_bocongthuong.png" alt="" id="bocongthuong">
                             </a>
                         </div>
                         <div class="col-md-9 copy">

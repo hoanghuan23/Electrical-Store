@@ -1,6 +1,7 @@
 <?php
   require('../config/config.php');
   include('../functions/common_function.php');
+  
 
 // xóa sản phẩm trong giỏ hàng
 if(isset($_GET["task"]) && $_GET["task"]=="delete") {
@@ -51,6 +52,7 @@ if(isset($_POST['update_qty_prd'])) {
     <title>Cart</title>
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" href="../assets/img/logo/logo.png">
     <link rel="stylesheet" href="../assets/css/responsive.css">
     <link rel="stylesheet" href="../assets/css/cart.css">
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
@@ -211,7 +213,7 @@ if(isset($_POST['update_qty_prd'])) {
                                 
                                 if($cart_row['cart_count'] > 0) {
                                     echo "
-                                        <a href='../user_area/checkout.php?task=checkout&ip=$get_ip_add'>
+                                        <a href='/electrician_web/user_area/checkout.php?task=checkout&ip=$get_ip_add'>
                                             <input type='submit' id='place_order' name='checkout' value='TIẾP TỤC THANH TOÁN'>
                                         </a>";
                                 } else {

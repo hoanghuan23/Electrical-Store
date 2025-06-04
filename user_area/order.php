@@ -15,8 +15,10 @@
 
     $order_payment_method = $_POST['payment'];
 
-    // mã hóa đơn ngẫu nhiên
-    $order_code = mt_rand();
+    // Tạo mã đơn hàng duy nhất bằng cách kết hợp timestamp, user_id và số ngẫu nhiên
+    $timestamp = time();
+    $random = mt_rand(1000, 9999);
+    $order_code = $timestamp . '_' . $user_id . '_' . $random;
 
     $get_ip_address = getIPAddress();
     $total_price = 0;
@@ -90,7 +92,7 @@
     
     // lưu dữ liệu đặt hàng bao gồm order_code, tổng tiền sản phẩm, phương thức thanh toán, ngày đặt hàng
     $insert_order = "INSERT INTO `tbl_order` (user_id, order_code, total_price, order_payment_method, order_date, order_status)
-                        VALUES ($user_id, $order_code, $total_price, '$order_payment_method', NOW(), '$status')";
+                    VALUES ($user_id, '$order_code', $total_price, '$order_payment_method', NOW(), '$status')";
     if (!mysqli_query($conn, $insert_order)) {
         // Nếu lỗi, xóa các bản ghi đã insert
         mysqli_query($conn, "DELETE FROM tbl_user_order WHERE order_code = $order_code");
@@ -100,6 +102,9 @@
     // Xóa sản phẩm trong giỏ hàng
     $empty_cart = "DELETE FROM `tbl_cart_detail` WHERE ip_address='$get_ip_address'";
     $result_delete = mysqli_query($conn, $empty_cart);
+    
+    unset($_SESSION['order_id']);
+    unset($_SESSION['total_price']);
 
     echo "<script>alert('Đặt hàng thành công!')</script>";
     echo "<script>window.location.href='order.php?user_id=$user_id'</script>";
@@ -111,6 +116,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../assets/img/logo/logo.png">    
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
@@ -148,7 +154,7 @@
             <div class="row complete-order">
                 <div class="col-3"></div>
                 <div class="col-6">
-                    <img src="./../assets/img/order/icon_dat_hang_thanh_cong.svg" alt="">
+                    <img src="../assets/img/order/tracking.png" alt="">
                 </div>
                 <div class="col-3"></div>
 
@@ -160,7 +166,7 @@
             </div>
 
             <div class="continue-purchase">
-                <a href="../page/product.php">
+                <a href="/electrician_web/page/product.php">
                     <button>
                         TIẾP TỤC MUA HÀNG
                     </button>

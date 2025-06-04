@@ -2,14 +2,6 @@
   require('../config/config.php');
   include('../functions/common_function.php');
 
-
-//   if(isset($_POST['update_address'])) {
-//     $user_id = $_POST['update_add_user'];
-//     $user_mobile = $_POST['customerPhone'];
-//     $user_address = $_POST['customerAddress'];
-//     $sql_update = "update tbl_users set user_mobile = N'".$user_mobile."', user_address = ".$user_address." where user_id =" .$user_id;
-
-//   }
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,7 +29,6 @@
                         <div class="thongtin">
                             <h4><label>THÔNG TIN GIAO HÀNG</label></h4>
                         </div>
-                        <!-- <form action="order.php" method = "POST"> -->
                         <?php
                             // if (isset($_SESSION['username'])) {
                                 // checkout();
@@ -74,11 +65,6 @@
                                         <p class='form-row form-row-wide'>
                                             <textarea class='input-text' id='inputError2' placeholder='Ghi chú đơn hàng' name='customerNote'></textarea>
                                         </p>
-                                        <p class='form-row form-row-wide'>
-                                                <input type='checkbox' class='information'>
-                                                <label class='checkbox'>Cập nhật các thông tin mới nhất về chương trình từ Ananas</label>
-                                        </p>
-                                            
                                         ";
                                     }
                                 }
@@ -109,7 +95,7 @@
                             <label class="checkbox">
                                 <input type="radio" name="payment" class="pay" value="Thanh toán bằng mã QR">
                                 Thanh toán bằng mã QR
-                                <img src="./../assets/img/checkout/icon_momo-01.svg" alt="">
+                                <img src="../assets/img/checkout/icon_momo-01.svg" alt="">
                             </label>
 
                     </div>
@@ -213,16 +199,16 @@
         </div>
         <script>
             document.getElementById('placeOrderBtn').addEventListener('click', function(e) {
-                e.preventDefault();
                 var paymentMethod = document.querySelector('input[name="payment"]:checked').value;
                 
                 <?php 
                 $_SESSION['total_price'] = $total_price;
-                $_SESSION['order_id'] = time() . '_' . $user_id; // Generate a unique order ID
+                $_SESSION['order_id'] = time() . '_' . $user_id;
                 ?>
 
                 if(paymentMethod === 'Thanh toán bằng mã QR') {
-                    window.location.href = 'pay.php';
+                    e.preventDefault();
+                    window.location.href = 'pay.php?user_id=<?php echo $user_id; ?>';
                 }
             });
         </script>

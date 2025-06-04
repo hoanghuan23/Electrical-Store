@@ -1,8 +1,8 @@
 <?php
     session_start();
 ?>
-<link rel="stylesheet" href="../chatbot/assets/chatbot.css">
-<form action="../config/header.php" method="post">
+<link rel="stylesheet" href="/chatbot/assets/chatbot.css">
+<form action="/config/header.php" method="post">
 
 <div id="header" class="container-fluid">
     <div class="row">
@@ -17,21 +17,21 @@
             }
             ?>
             <li>
-                <a href="#">
-                    <img src="../assets/img/header/menu/icon_tim_cua_hang.svg" alt="">
+                <a href="https://maps.app.goo.gl/MuQd9uzLg9uM6Jv88">
+                    <img src="/electrician_web/assets/img/header/menu/icon_tim_cua_hang.svg" alt="">
                     Vị trí cửa hàng
                 </a>
             </li>
             <li>
-                <a href="../page/contact.php">
-                    <img src="../assets/img/header/menu/icon_heart_header.svg" alt="">
+                <a href="/electrician_web/page/contact.php">
+                    <img src="/electrician_web/assets/img/header/menu/icon_heart_header.svg" alt="">
                     Liên hệ
                 </a>
             </li>
 
             <li>
-                <a href="../page/cart.php">
-                    <img src="../assets/img/header/menu/icon_gio_hang.svg" alt="">
+                <a href="/electrician_web/page/cart.php">
+                    <img src="/electrician_web/assets/img/header/menu/icon_gio_hang.svg" alt="">
                     Giỏ hàng (<?php
                     if (!isset($_SESSION['username'])) {echo"0";}
                     else{ cart_item(); cart();}?>)
@@ -42,8 +42,8 @@
                 <?php
                     if (!isset($_SESSION['username'])) {
                         echo " 
-                        <a href='../user_area/login.php'>
-                        <img src='../assets/img/header/menu/icon_tra_cuu_don_hang.svg' alt=''> 
+                        <a href='/electrician_web/user_area/login.php'>
+                        <img src='/electrician_web/assets/img/header/menu/icon_tra_cuu_don_hang.svg' alt=''> 
                         Tra cứu đơn hàng
                         </a>
                         ";
@@ -55,8 +55,8 @@
                         while($row=mysqli_fetch_array($result)) {
                             $user_id = $row['user_id'];
                             echo"
-                            <a href='../user_area/order.php?user_id=$user_id'>
-                            <img src='../assets/img/header/menu/icon_tra_cuu_don_hang.svg' alt=''> 
+                            <a href='/electrician_web/user_area/order.php?user_id=$user_id'>
+                            <img src='assets/img/header/menu/icon_tra_cuu_don_hang.svg' alt=''> 
                             Tra cứu đơn hàng
                             </a>
                             ";
@@ -69,16 +69,16 @@
                 <?php
                     if (!isset($_SESSION['username'])) {
                         echo "
-                        <a href='../user_area/login.php'>
-                        <img src='../assets/img/header/menu/icon_dang_nhap.svg' alt=''>
+                        <a href='/electrician_web/user_area/login.php'>
+                        <img src='assets/img/header/menu/icon_dang_nhap.svg' alt=''>
                         Đăng nhập
                         </a>
                         ";
                     }
                     else {
                         echo "
-                        <a href='../user_area/logout.php'>
-                            <img src='../assets/img/header/menu/icon_dang_nhap.svg' alt=''>
+                        <a href='/electrician_web/user_area/logout.php'>
+                            <img src='/assets/img/header/menu/icon_dang_nhap.svg' alt=''>
                             Đăng xuất
                         </a>
                         ";
@@ -95,62 +95,62 @@
         <div class="row align-items-center">
             <div class="col-md-2">
                 <div class="logo">
-                    <a href="../page/index.php">
-                        <img src="../assets/img/header/nav/Logo_Header.svg" alt="Logo">
+                    <a href="/electrician_web/">
+                        <img src="/electrician_web/assets/img/header/nav/Logo_Header.svg" alt="Logo">
                     </a>
                 </div>
             </div>
             <div class="col-md-8">
                 <ul class="nav-list d-flex justify-content-center">
                     <li class="nav-item line">
-                        <a href="../page/product.php">DANH MỤC SẢN PHẨM</a>
+                        <a href="/electrician_web/page/product.php">DANH MỤC SẢN PHẨM</a>
                     </li>
                     <li class="nav-item line">
-                        <a href="../page/product.php">
+                        <a href="/electrician_web/page/product.php">
                             TỰ ĐỘNG HÓA & ĐIỀU KHIỂN
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                             </svg>
                         </a>
                         <ul class="subnav">
-                            <li><a href="../page/product.php?data_gender=men">Rơ Le Điều Khiển</a></li>
-                            <li><a href="../page/product.php?data_gender=women">Động Cơ</a></li>
-                            <li><a href="">Biến Tần</a></li>
-                            <li><a href="">Công Tắc Điều Khiển</a></li>
+                            <li><a href="/electrician_web/page/product.php?category=1">Rơ Le Điều Khiển</a></li>
+                            <li><a href="/electrician_web/page/product.php?category=2">Động Cơ</a></li>
+                            <li><a href="/electrician_web/page/product.php?category=3">Biến Tần</a></li>
+                            <li><a href="/electrician_web/page/product.php?category=4">Công Tắc Điều Khiển</a></li>
                         </ul>
                     </li>
                     <li class="nav-item line">
-                        <a href="../page/product.php">
+                        <a href="/electrician_web/page/product.php">
                             NÚT NHẤN & CÔNG TẮC
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                             </svg>
                         </a>
                         <ul class="subnav">
-                            <li><a href="../page/product.php?data_gender=men">Phụ Kiện</a></li>
-                            <li><a href="../page/product.php?data_gender=women">Đèn Báo</a></li>
-                            <li><a href="">Bóng Đèn</a></li>
-                            <li><a href="">Công Tắc</a></li>
+                            <li><a href="/electrician_web/page/product.php?category=5">Phụ Kiện</a></li>
+                            <li><a href="/electrician_web/page/product.php?category=6">Đèn Báo</a></li>
+                            <li><a href="/electrician_web/page/product.php?category=7">Bóng Đèn</a></li>
+                            <li><a href="/electrician_web/page/product.php?category=8">Công Tắc</a></li>
                         </ul>
                     </li>
                     <li class="nav-item line">
-                        <a href="../page/product.php?data_gender=men">
+                        <a href="/electrician_web/page/product.php">
                             CẢM BIẾN
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                             </svg>
                         </a>
                         <ul class="subnav">
-                            <li><a href="">Cáp Cảm Biến</a></li>
-                            <li><a href="">Cảm Biến Độ Tương Phản</a></li>
-                            <li><a href="">Bộ Điều Khiển Nhiệt Độ</a></li>
+                            <li><a href="/electrician_web/page/product.php?category=10">Cáp Cảm Biến</a></li>
+                            <li><a href="/electrician_web/page/product.php?category=11">Cảm Biến Độ Tương Phản</a></li>
+                            <li><a href="/electrician_web/page/product.php?category=12">Bộ Điều Khiển Nhiệt Độ</a></li>
                         </ul>
                     </li>
                     </ul>
             </div>
             <div class="col-md-2">
                 <div class="search-nav">
-                    <form action="search_product.php" method="post">
+                    <form action="/electrician_web/page/search_product.php" method="post">
                         <div class="input-group">
                             <input type="text" name="key" class="form-control" placeholder="Search ...">
                             <button class="btn btn-dark" type="submit" name="btn_search">Search</button>
@@ -200,7 +200,7 @@
 <!-- End Header -->
 
 <!-- start Chatbot -->
-<?php include '../chatbot/chatbot.php'; ?>
+<?php include __DIR__ . '/../chatbot/chatbot.php'; ?>
 <!-- end Chatbot -->
 
 <style>

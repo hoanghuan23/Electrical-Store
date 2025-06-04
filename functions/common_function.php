@@ -1,5 +1,5 @@
 <?php
-    include('../config/config.php');
+    include(__DIR__ . '/../config/config.php');
     
         // displaying category 
         function getcategory() {
@@ -102,13 +102,13 @@
                                 <div class='col-sm-6 col-md-4 col-lg-4 list-item'>
                                     <div class='item img-thumbnail'>
                                         <a href='product_detail.php?product_id=$product_id'>
-                                            <img src='./../admin/quanlysanpham/upload/$img' alt='' class='img-item'>
-                                            <img src='./../admin/quanlysanpham/upload/$img_hover' alt='' class='img-item-hover'>
+                                            <img src='../admin/quanlysanpham/upload/$img' alt='' class='img-item'>
+                                            <img src='../admin/quanlysanpham/upload/$img_hover' alt='' class='img-item-hover'>
                                         </a>
                                     </div>
                                     <div class='btn-buy'>";
                             if(!isset($_SESSION['username'])) {
-                                echo "<a href='../user_area/login.php' class='btn btn-buy-now'>THÊM VÀO GIỎ HÀNG</a>";
+                                echo "<a href='/electrician_web/user_area/login.php' class='btn btn-buy-now'>THÊM VÀO GIỎ HÀNG</a>";
                             } else {
                                 echo "<a href='product.php?add_to_cart=$product_id' class='btn btn-buy-now'>THÊM VÀO GIỎ HÀNG</a>";
                             }
@@ -118,7 +118,8 @@
                                         <h3 class='name'>
                                             <a href='product_detail.php?product_id=$product_id' >$product_name</a>
                                         </h3>
-                                        <h3 class='color'>$product_color (số lượng {$row['product_quantity']})</h3>
+                                        <h3 class='color'>$product_color</h3>
+                                        <h3 class='quantity'>Số lượng: " . $row['product_quantity'] . "</h3>
                                                 
                                         <h3 class='price'>$product_price VNĐ</h3>
                                     </div>
@@ -184,8 +185,8 @@
                                 <div class='col-sm-6 col-md-4 col-lg-4 list-item'>
                                     <div class='item img-thumbnail'>
                                         <a href='product_detail.php?product_id=$product_id'>
-                                            <img src='./../admin/quanlysanpham/upload/$img' alt='' class='img-item'>
-                                            <img src='./../admin/quanlysanpham/upload/$img_hover' alt='' class='img-item-hover'>
+                                            <img src='../admin/quanlysanpham/upload/$img' alt='' class='img-item'>
+                                            <img src='../admin/quanlysanpham/upload/$img_hover' alt='' class='img-item-hover'>
                                         </a>
                                     </div>
                                     <div class='btn-buy'>
@@ -247,8 +248,8 @@
                                             <div class='col-sm-6 col-md-4 col-lg-4 list-item'>
                                                 <div class='item img-thumbnail'>
                                                     <a href='product_detail.php?product_id=$product_id'>
-                                                        <img src='./../admin/quanlysanpham/upload/$img' alt='' class='img-item'>
-                                                        <img src='./../admin/quanlysanpham/upload/$img_hover' alt='' class='img-item-hover'>
+                                                        <img src='../admin/quanlysanpham/upload/$img' alt='' class='img-item'>
+                                                        <img src='../admin/quanlysanpham/upload/$img_hover' alt='' class='img-item-hover'>
                                                     </a>
                                                 </div>
                                                 <div class='btn-buy'>
@@ -306,8 +307,8 @@
                                 <div class='col-sm-6 col-md-4 col-lg-4 list-item'>
                                     <div class='item img-thumbnail'>
                                         <a href='product_detail.php?product_id=$product_id'>
-                                            <img src='./../admin/quanlysanpham/upload/$img' alt='' class='img-item'>
-                                            <img src='./../admin/quanlysanpham/upload/$img_hover' alt='' class='img-item-hover'>
+                                            <img src='../admin/quanlysanpham/upload/$img' alt='' class='img-item'>
+                                            <img src='../admin/quanlysanpham/upload/$img_hover' alt='' class='img-item-hover'>
                                         </a>
                                     </div>
                                     <div class='btn-buy'>
@@ -372,10 +373,10 @@
                                 <div id='carouselExampleAutoplaying' class='carousel slide' data-bs-ride='carousel'>
                                     <div class='carousel-inner'>
                                         <div class='carousel-item active'>
-                                        <img src='./../admin/quanlysanpham/upload/$img' class='d-block w-100' alt='...'>
+                                        <img src='../admin/quanlysanpham/upload/$img' class='d-block w-100' alt='...'>
                                         </div>
                                         <div class='carousel-item'>
-                                        <img src='./../admin/quanlysanpham/upload/$img_hover' class='d-block w-100' alt='...'>
+                                        <img src='../admin/quanlysanpham/upload/$img_hover' class='d-block w-100' alt='...'>
                                         </div>
                                     </div>
                                     <button class='carousel-control-prev' type='button' data-bs-target='#carouselExampleAutoplaying' data-bs-slide='prev'>
@@ -426,14 +427,14 @@
                     echo "
                         <div class='col-sm-6 col-md-6 col-lg-6 post-item'>
                             <a href='news.php?new_id=$new_id'>
-                                <img src='./../admin/quanlytintuc/upload/$img' alt=''>
+                                <img src='admin/quanlytintuc/upload/$img' alt=''>
                             </a>
                             <h3 class='post-title'>
-                                <a href='news.php?new_id=$new_id'>$title</a>
+                                <a href='/electrician_web/page/news.php?new_id=$new_id'>$title</a>
                             </h3>
                             <h3 class='post-desc'>$news_desc</h3>
                             <h3 class='post-detail'>
-                                <a href='news.php?new_id=$new_id'>Đọc thêm</a>
+                                <a href='/electrician_web/page/news.php?new_id=$new_id'>Đọc thêm</a>
                             </h3>
                         </div>";
                   }
@@ -482,7 +483,7 @@
         
                     echo "
                         <div class='news-detail-banner container-fluid'>
-                        <img src='./../admin/quanlytintuc/upload/$img' alt=''>
+                        <img src='../admin/quanlytintuc/upload/$img' alt=''>
                         </div>
             
                         <div class='news-detail-content container-fluid'>
@@ -504,10 +505,10 @@
                             <br>
                             <div class='row cont-img'>
                               <div class='col-sm-6 col-md-6 left'>
-                                  <img src='./../admin/quanlytintuc/upload/$img2' alt=''>
+                                  <img src='../admin/quanlytintuc/upload/$img2' alt=''>
                               </div>
                               <div class='col-sm-6 col-md-6 right'>
-                                  <img src='./../admin/quanlytintuc/upload/$img3' alt=''>
+                                  <img src='../admin/quanlytintuc/upload/$img3' alt=''>
                               </div>
                             </div>  
                             <br>
@@ -561,8 +562,8 @@
                         <div class='col-sm-6 col-md-4 col-lg-4 list-item'>
                             <div class='item img-thumbnail'>
                                 <a href='product_detail.php?product_id=$product_id'>
-                                    <img src='./../admin/quanlysanpham/upload/$img' alt='' class='img-item'>
-                                    <img src='./../admin/quanlysanpham/upload/$img_hover' alt='' class='img-item-hover'>
+                                    <img src='../admin/quanlysanpham/upload/$img' alt='' class='img-item'>
+                                    <img src='../admin/quanlysanpham/upload/$img_hover' alt='' class='img-item-hover'>
                                 </a>
                             </div>
                             <div class='btn-buy'>
@@ -609,7 +610,7 @@
             if(isset($_GET['add_to_cart'])) {
                 global $conn;
                 if (!isset($_SESSION['username'])) {
-                    header(location: "../user_area/login/php");
+                    header(location: "/electrician_web/user_area/login.php");
                 }
                 else {
                     $get_ip_add = getIPAddress();
@@ -774,7 +775,7 @@
                         // Lấy thông tin sản phẩm từ bảng user_order
                         $sql_products = "SELECT GROUP_CONCAT(product_name) as products, SUM(quantity) as total_quantity 
                                        FROM `tbl_user_order` 
-                                       WHERE order_code = $order_code";
+                                       WHERE order_code = '$order_code'";
                         $result_products = mysqli_query($conn, $sql_products);
                         $product_info = mysqli_fetch_array($result_products);
                         $products = $product_info['products'];
@@ -792,7 +793,7 @@
                             // Hiển thị nút hủy đơn hàng chỉ khi trạng thái không phải là "Đã hủy" hoặc "Đã giao hàng"
                             $cancel_button = '';
                             if($status != "Đã hủy" && $status != "Đã giao hàng") {
-                                $cancel_button = "<a href='../user_area/order.php?user_id=$user_id&cancel_order=$order_code' class='btn btn-danger btn-sm' onclick='return confirm(\"Bạn có chắc chắn muốn hủy đơn hàng này?\")'>
+                                $cancel_button = "<a href='/electrician_web/user_area/order.php?user_id=$user_id&cancel_order=$order_code' class='btn btn-danger btn-sm' onclick='return confirm(\"Bạn có chắc chắn muốn hủy đơn hàng này?\")'>
                                                     <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-circle' viewBox='0 0 16 16'>
                                                         <path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/>
                                                         <path d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'/>

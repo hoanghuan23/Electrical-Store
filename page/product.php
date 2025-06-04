@@ -10,6 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="../assets/css/style.css">
+        <link rel="icon" href="../assets/img/logo/logo.png">
         <link rel="stylesheet" href="../assets/css/product.css">
         <link rel="stylesheet" href="../assets/css/responsive.css">
         <script src="../assets/js/bootstrap.bundle.min.js"></script>
@@ -63,7 +64,7 @@
                                          ?>
                                     </ul>
                                 </li>
-                                <li class="prd-nav">
+                                <!-- <li class="prd-nav">
                                     <label class="opt">
                                         GIÁ
                                     </label>
@@ -75,18 +76,8 @@
                                         <li><label>200k - 299k</label></li>
                                         <li><label>0 - 200k</label></li>                                        
                                     </ul>
-                                </li>
-                                <!-- <li class="prd-nav">
-                                    <label class="opt">
-                                        MÀU SẮC
-                                        
-                                    </label>
-                                    <ul class="subnav-tree">
-                                        <?php
-                                            // getcolor();
-                                        ?>
-                                    </ul>
                                 </li> -->
+                              
                             </ul>
                         </div>
                     </div>

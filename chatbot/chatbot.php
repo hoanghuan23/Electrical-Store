@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Chatbot</title>
-    <link href="../chatbot/assets/chatbot.css" rel="stylesheet">
+    <link href="/electrician_web/chatbot/assets/chatbot.css" rel="stylesheet">
 </head>
 <body>
     <div class="chatbot-button" onclick="toggleAIChat()">
-        <img src="../assets/img/chatbot/chatbot23.jpg" alt="Chatbot" class="chatbot-icon">
+        <img src="/electrician_web/assets/img/chatbot/chatbot23.jpg" alt="Chatbot" class="chatbot-icon">
     </div>
 
     <div class="ai-chat-container" id="aiChatContainer" style="display: none;">
@@ -22,6 +22,6 @@
         </div>
     </div>
 
-    <script src="../chatbot/assets/chatbot.js"></script>
+    <script src="/electrician_web/chatbot/assets/chatbot.js"></script>
 </body>
 </html>
