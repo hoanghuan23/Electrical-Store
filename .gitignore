@@ -1,2 +1,7 @@
 .env
+
+# không commit file sql
 btl_web06_stt13.sql
+
+#không commit file chứa hình ảnh sản phẩm
+admin/quanlysanpham/upload/
