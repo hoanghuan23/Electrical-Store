@@ -2,7 +2,7 @@
     session_start();
 
     if(!$_SESSION["ad_name"]) {
-        header("location:../user_area/login.php");
+        header("/electrician_web/user_area/login.php");
     }
 ?>
 <!DOCTYPE html>
@@ -17,7 +17,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="../NiceAdmin/assets/img/favicon.png" rel="icon">
+  <link rel="icon" href="../assets/img/logo/logo.png">
   <link href="../NiceAdmin/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -64,7 +64,7 @@
               <hr class="dropdown-divider">
             </li>
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="../page/index.php">
+              <a class="dropdown-item d-flex align-items-center" href="/electrician_web/index.php">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
