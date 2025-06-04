@@ -16,7 +16,7 @@
         $prd_img_hover = $_FILES['prd_img_hover']['name'];
 
         //upload img
-        $target_dir = "./quanlysanpham/upload/";
+        $target_dir = "/quanlysanpham/upload/";
         $target_file1 = $target_dir . basename($_FILES["prd_img"]["name"]);
         $imageFileType1 = strtolower(pathinfo($target_file1,PATHINFO_EXTENSION));
         
@@ -33,19 +33,19 @@
 
         move_uploaded_file($_FILES["prd_img"]["tmp_name"], $target_file1);
         move_uploaded_file($_FILES["prd_img_hover"]["tmp_name"], $target_file2);
-
-
-        if(mysqli_query($conn, $sql_insert)) {
+        
+        $product_code = $_POST['txt_prd_code'];
+        $check_product_code = "SELECT * FROM tbl_product WHERE product_code = '$product_code'";
+        $result_check_product_code = mysqli_query($conn, $check_product_code);
+        if(mysqli_num_rows($result_check_product_code) > 0) {
+            echo "<script>alert('Mã sản phẩm đã tồn tại')</script>";
+        } else {
+            mysqli_query($conn, $sql_insert);
             echo "<script>alert('Đã thêm sản phẩm thành công')</script>";
             echo "<script>window.open('./dashboard.php?products','_self')</script>";
-        } 
-        else {
-            echo "Error: " . $sql_insert . "<br>" . mysqli_error($conn);
         }
     }
 
-        // Xóa dữ liệu
-    // task có thể thay đổi, tự đặt có thể là tên khác
     // Xóa dữ liệu
     // task có thể thay đổi, tự đặt có thể là tên khác
     if(isset($_GET["products"]) && $_GET["products"]=="delete") {

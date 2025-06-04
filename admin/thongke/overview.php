@@ -19,6 +19,20 @@ $today = date('Y-m-d');
 $month_start = date('Y-m-01');
 $year_start = date('Y-01-01');
 
+$sql = "SELECT MONTH(order_date) as month, SUM(total_price) as revenue
+        FROM tbl_order
+        WHERE YEAR(order_date) = YEAR(CURDATE())
+        GROUP BY MONTH(order_date)
+        ORDER BY month";
+$result = mysqli_query($conn, $sql);
+
+$months = [];
+$revenues = [];
+while($row = mysqli_fetch_assoc($result)) {
+    $months[] = $row['month'];
+    $revenues[] = $row['revenue'];
+}
+
 // Lấy doanh thu theo filter
 switch($filter) {
     case 'today':
@@ -26,11 +40,11 @@ switch($filter) {
         $filter_text = "Hôm nay";
         break;
     case 'month':
-        $sql_revenue = "SELECT SUM(total_price) as total_revenue FROM tbl_order WHERE DATE(order_date) >= '$month_start' AND order_status = 'Đã giao hàng'";
+        $sql_revenue = "SELECT SUM(total_price) as total_revenue FROM tbl_order WHERE YEAR(order_date) = YEAR(CURDATE()) AND MONTH(order_date) = MONTH(CURDATE()) AND order_status = 'Đã giao hàng'";
         $filter_text = "Tháng này";
         break;
     case 'year':
-        $sql_revenue = "SELECT SUM(total_price) as total_revenue FROM tbl_order WHERE DATE(order_date) >= '$year_start' AND order_status = 'Đã giao hàng'";
+        $sql_revenue = "SELECT SUM(total_price) as total_revenue FROM tbl_order WHERE YEAR(order_date) = YEAR(CURDATE()) AND order_status = 'Đã giao hàng'";
         $filter_text = "Năm nay";
         break;
     default:
@@ -98,6 +112,52 @@ $yesterday_revenue = $row_yesterday['yesterday_revenue'] ?? 0;
 $growth_percentage = $yesterday_revenue > 0 ? (($total_revenue - $yesterday_revenue) / $yesterday_revenue) * 100 : 0;
 $growth_class = $growth_percentage >= 0 ? 'text-success' : 'text-danger';
 $growth_text = $growth_percentage >= 0 ? 'increase' : 'decrease';
+
+// PHAN TRANG CHO DON HANG GAN DAY
+$recent_limit = 5;
+$recent_page = isset($_GET['recent_page']) ? (int)$_GET['recent_page'] : 1;
+$recent_offset = ($recent_page - 1) * $recent_limit;
+// Dem tong so don hang (theo filter)
+switch($filter) {
+    case 'today':
+        $sql_recent_count = "SELECT COUNT(DISTINCT o.order_code) as total FROM tbl_order o WHERE DATE(o.order_date) = '$today'";
+        break;
+    case 'month':
+        $sql_recent_count = "SELECT COUNT(DISTINCT o.order_code) as total FROM tbl_order o WHERE DATE(o.order_date) >= '$month_start'";
+        break;
+    case 'year':
+        $sql_recent_count = "SELECT COUNT(DISTINCT o.order_code) as total FROM tbl_order o WHERE DATE(o.order_date) >= '$year_start'";
+        break;
+    default:
+        $sql_recent_count = "SELECT COUNT(DISTINCT o.order_code) as total FROM tbl_order o WHERE DATE(o.order_date) = '$today'";
+}
+$result_recent_count = mysqli_query($conn, $sql_recent_count);
+$row_recent_count = mysqli_fetch_assoc($result_recent_count);
+$total_recent = $row_recent_count['total'];
+$total_recent_pages = max(1, ceil($total_recent / $recent_limit));
+
+// PHAN TRANG CHO SAN PHAM BAN CHAY
+$top_limit = 5;
+$top_page = isset($_GET['top_page']) ? (int)$_GET['top_page'] : 1;
+$top_offset = ($top_page - 1) * $top_limit;
+// Dem tong so san pham ban chay (theo filter)
+switch($filter) {
+    case 'today':
+        $sql_top_count = "SELECT COUNT(DISTINCT p.product_id) as total FROM tbl_product p LEFT JOIN tbl_user_order uo ON p.product_id = uo.product_id LEFT JOIN tbl_order o ON uo.order_code = o.order_code WHERE DATE(o.order_date) = '$today'";
+        break;
+    case 'month':
+        $sql_top_count = "SELECT COUNT(DISTINCT p.product_id) as total FROM tbl_product p LEFT JOIN tbl_user_order uo ON p.product_id = uo.product_id LEFT JOIN tbl_order o ON uo.order_code = o.order_code WHERE DATE(o.order_date) >= '$month_start'";
+        break;
+    case 'year':
+        $sql_top_count = "SELECT COUNT(DISTINCT p.product_id) as total FROM tbl_product p LEFT JOIN tbl_user_order uo ON p.product_id = uo.product_id LEFT JOIN tbl_order o ON uo.order_code = o.order_code WHERE DATE(o.order_date) >= '$year_start'";
+        break;
+    default:
+        $sql_top_count = "SELECT COUNT(DISTINCT p.product_id) as total FROM tbl_product p LEFT JOIN tbl_user_order uo ON p.product_id = uo.product_id LEFT JOIN tbl_order o ON uo.order_code = o.order_code WHERE DATE(o.order_date) = '$today'";
+}
+$result_top_count = mysqli_query($conn, $sql_top_count);
+$row_top_count = mysqli_fetch_assoc($result_top_count);
+$total_top = $row_top_count['total'];
+$total_top_pages = max(1, ceil($total_top / $top_limit));
 ?>
 
 <div class="pagetitle">
@@ -198,6 +258,8 @@ $growth_text = $growth_percentage >= 0 ? 'increase' : 'decrease';
   </div>
 </div>
 
+<canvas id="revenueChart" width="600" height="300"></canvas>
+
 <!-- Recent Sales -->
 <div class="col-12">
   <div class="card recent-sales overflow-auto">
@@ -236,7 +298,7 @@ $growth_text = $growth_percentage >= 0 ? 'increase' : 'decrease';
                               JOIN tbl_user_order uo ON o.order_code = uo.order_code 
                               JOIN tbl_product p ON uo.product_id = p.product_id 
                               WHERE DATE(o.order_date) = '$today'
-                              ORDER BY o.order_date DESC LIMIT 5";
+                              ORDER BY o.order_date DESC LIMIT $recent_offset, $recent_limit";
                   break;
               case 'month':
                   $sql_recent = "SELECT o.*, u.user_name, p.product_name 
@@ -245,7 +307,7 @@ $growth_text = $growth_percentage >= 0 ? 'increase' : 'decrease';
                               JOIN tbl_user_order uo ON o.order_code = uo.order_code 
                               JOIN tbl_product p ON uo.product_id = p.product_id 
                               WHERE DATE(o.order_date) >= '$month_start'
-                              ORDER BY o.order_date DESC LIMIT 5";
+                              ORDER BY o.order_date DESC LIMIT $recent_offset, $recent_limit";
                   break;
               case 'year':
                   $sql_recent = "SELECT o.*, u.user_name, p.product_name 
@@ -254,7 +316,7 @@ $growth_text = $growth_percentage >= 0 ? 'increase' : 'decrease';
                               JOIN tbl_user_order uo ON o.order_code = uo.order_code 
                               JOIN tbl_product p ON uo.product_id = p.product_id 
                               WHERE DATE(o.order_date) >= '$year_start'
-                              ORDER BY o.order_date DESC LIMIT 5";
+                              ORDER BY o.order_date DESC LIMIT $recent_offset, $recent_limit";
                   break;
               default:
                   $sql_recent = "SELECT o.*, u.user_name, p.product_name 
@@ -263,7 +325,7 @@ $growth_text = $growth_percentage >= 0 ? 'increase' : 'decrease';
                               JOIN tbl_user_order uo ON o.order_code = uo.order_code 
                               JOIN tbl_product p ON uo.product_id = p.product_id 
                               WHERE DATE(o.order_date) = '$today'
-                              ORDER BY o.order_date DESC LIMIT 5";
+                              ORDER BY o.order_date DESC LIMIT $recent_offset, $recent_limit";
           }
           $result_recent = mysqli_query($conn, $sql_recent);
           while($row_recent = mysqli_fetch_assoc($result_recent)) {
@@ -278,6 +340,16 @@ $growth_text = $growth_percentage >= 0 ? 'increase' : 'decrease';
           <?php } ?>
         </tbody>
       </table>
+      <!-- Pagination for recent orders -->
+      <nav>
+        <ul class="pagination">
+          <?php for($i = 1; $i <= $total_recent_pages; $i++): ?>
+            <li class="page-item <?php if($i == $recent_page) echo 'active'; ?>">
+              <a class="page-link" href="?filter=<?php echo $filter; ?>&recent_page=<?php echo $i; ?><?php if(isset($_GET['top_page'])) echo '&top_page=' . (int)$_GET['top_page']; ?>"><?php echo $i; ?></a>
+            </li>
+          <?php endfor; ?>
+        </ul>
+      </nav>
     </div>
   </div>
 </div>
@@ -320,7 +392,7 @@ $growth_text = $growth_percentage >= 0 ? 'increase' : 'decrease';
                             LEFT JOIN tbl_order o ON uo.order_code = o.order_code 
                             WHERE DATE(o.order_date) = '$today'
                             GROUP BY p.product_id 
-                            ORDER BY sold_count DESC LIMIT 5";
+                            ORDER BY sold_count DESC LIMIT $top_offset, $top_limit";
                   break;
               case 'month':
                   $sql_top = "SELECT p.*, COUNT(uo.product_id) as sold_count 
@@ -329,7 +401,7 @@ $growth_text = $growth_percentage >= 0 ? 'increase' : 'decrease';
                             LEFT JOIN tbl_order o ON uo.order_code = o.order_code 
                             WHERE DATE(o.order_date) >= '$month_start'
                             GROUP BY p.product_id 
-                            ORDER BY sold_count DESC LIMIT 5";
+                            ORDER BY sold_count DESC LIMIT $top_offset, $top_limit";
                   break;
               case 'year':
                   $sql_top = "SELECT p.*, COUNT(uo.product_id) as sold_count 
@@ -338,7 +410,7 @@ $growth_text = $growth_percentage >= 0 ? 'increase' : 'decrease';
                             LEFT JOIN tbl_order o ON uo.order_code = o.order_code 
                             WHERE DATE(o.order_date) >= '$year_start'
                             GROUP BY p.product_id 
-                            ORDER BY sold_count DESC LIMIT 5";
+                            ORDER BY sold_count DESC LIMIT $top_offset, $top_limit";
                   break;
               default:
                   $sql_top = "SELECT p.*, COUNT(uo.product_id) as sold_count 
@@ -347,14 +419,14 @@ $growth_text = $growth_percentage >= 0 ? 'increase' : 'decrease';
                             LEFT JOIN tbl_order o ON uo.order_code = o.order_code 
                             WHERE DATE(o.order_date) = '$today'
                             GROUP BY p.product_id 
-                            ORDER BY sold_count DESC LIMIT 5";
+                            ORDER BY sold_count DESC LIMIT $top_offset, $top_limit";
           }
           $result_top = mysqli_query($conn, $sql_top);
           while($row_top = mysqli_fetch_assoc($result_top)) {
           ?>
           <tr>
             <th scope="row">
-              <a href="#"><img src="../assets/img/products/<?php echo $row_top['img']; ?>" alt=""></a>
+              <a href="#"><img src="quanlysanpham/upload/<?php echo $row_top['img']; ?>" alt=""></a>
             </th>
             <td><a href="#" class="text-primary fw-bold"><?php echo $row_top['product_name']; ?></a></td>
             <td><?php echo number_format($row_top['product_price']); ?> VNĐ</td>
@@ -364,6 +436,78 @@ $growth_text = $growth_percentage >= 0 ? 'increase' : 'decrease';
           <?php } ?>
         </tbody>
       </table>
+      <!-- Pagination for top selling products -->
+      <nav>
+        <ul class="pagination">
+          <?php for($i = 1; $i <= $total_top_pages; $i++): ?>
+            <li class="page-item <?php if($i == $top_page) echo 'active'; ?>">
+              <a class="page-link" href="?filter=<?php echo $filter; ?><?php if(isset($_GET['recent_page'])) echo '&recent_page=' . (int)$_GET['recent_page']; ?>&top_page=<?php echo $i; ?>"><?php echo $i; ?></a>
+            </li>
+          <?php endfor; ?>
+        </ul>
+      </nav>
     </div>
   </div>
 </div> 
+
+<style>
+.datatable-info,
+.datatable-pagination,
+.datatable-dropdown {
+    display: none !important;
+}
+</style> 
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+var months = <?php echo json_encode($months); ?>;
+var revenues = <?php echo json_encode($revenues); ?>;
+
+var monthLabels = months.map(function(m) {
+    return 'Tháng ' + m;
+});
+
+var ctx = document.getElementById('revenueChart').getContext('2d');
+var revenueChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: monthLabels,
+        datasets: [{
+            label: 'Doanh thu',
+            data: revenues,
+            backgroundColor: 'rgba(54, 162, 235, 0.7)'
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        return context.dataset.label + ': ' + context.parsed.y.toLocaleString('vi-VN') + ' VNĐ';
+                    }
+                }
+            }
+        },
+        animation: {
+            onComplete: function() {
+                var chart = this.chart;
+                var ctx = chart.ctx;
+                ctx.font = 'bold 14px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'bottom';
+                this.data.datasets.forEach(function(dataset, i) {
+                    var meta = chart.getDatasetMeta(i);
+                    meta.data.forEach(function(bar, index) {
+                        var data = dataset.data[index];
+                        ctx.fillStyle = '#222';
+                        ctx.fillText(data.toLocaleString('vi-VN'), bar.x, bar.y - 5);
+                    });
+                });
+            }
+        }
+    }
+});
+</script>
+</script>
